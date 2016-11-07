@@ -6,7 +6,7 @@
 
 <script>
   export default {
-    name: 'HexToggle',
+    name: 'HexTogglePanel',
 
     props: {
       visible: Boolean,
