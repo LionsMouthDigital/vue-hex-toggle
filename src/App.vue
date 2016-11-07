@@ -15,15 +15,11 @@
 </template>
 
 <script>
-import HexToggle      from './components/HexToggle.vue';
-import HexTogglePanel from './components/HexTogglePanel.vue';
+import Components from './HexToggle.js';
 
 export default {
   name: 'app',
 
-  components: {
-    HexToggle,
-    HexTogglePanel,
-  },
+  components: Components,
 }
 </script>
