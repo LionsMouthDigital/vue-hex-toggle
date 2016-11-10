@@ -1,5 +1,5 @@
 <template>
-  <div v-show="show">
+  <div v-show="show || useClass">
     <slot></slot>
   </div>
 </template>
@@ -9,13 +9,35 @@
     name: 'HexTogglePanel',
 
     props: {
-      visible: Boolean,
+      // Use a class rather than `v-show`. This greatly simplifies breakpoint-based visibility.
+      useClass: Boolean,
+      // Show when page loads.
+      visible:  Boolean,
     },
 
     data() {
       return {
         show: false,
       };
+    },
+
+    methods: {
+      /**
+       * Toggle the visibility of the panel.
+       *
+       * @author Curtis Blackwell
+       * @return {void}
+       */
+      toggleVisibility() {
+        // The Vue way.
+        if (!this.useClass) {
+          this.show = !this.show;
+
+        } else {
+          // The class-y way. ಠ_ರೃ
+          this.$el.classList.toggle('hidden');
+        }
+      },
     },
 
     created() {

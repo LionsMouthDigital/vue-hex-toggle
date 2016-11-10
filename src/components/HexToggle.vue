@@ -1,5 +1,5 @@
 <template>
-  <button @click.prevent="$parent.$refs[target].show = !$parent.$refs[target].show">
+  <button @click.prevent="$parent.$refs[target].toggleVisibility()">
     <slot></slot>
   </button>
 </template>
