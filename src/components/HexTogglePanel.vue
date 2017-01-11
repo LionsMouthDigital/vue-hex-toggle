@@ -19,6 +19,7 @@
 
     data() {
       return {
+        // Show this panel?
         show: false,
       };
     },
@@ -50,10 +51,20 @@
         this.show = true;
       }
 
+      // Toggle visibility when targeting tab gets clicked.
       HexBus.$on('HexToggle:toggled', (uid) => {
         // If this is the targeted panel, toggle it.
         if (uid === this._uid) {
           this.toggleVisibility();
+        }
+      });
+
+      // Close panel when targeting tab says to.
+      // Useful when tab (other than targeting tab) from accordion gets clicked.
+      HexBus.$on('HexToggle:panelClosed', (uid) => {
+        // If this is the targeted panel, close it.
+        if (uid === this._uid) {
+          this.show = false;
         }
       });
     },
