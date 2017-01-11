@@ -8,6 +8,7 @@
   export default {
     name: 'HexTogglePanel',
 
+
     props: {
       // Use a class rather than `v-show`. This greatly simplifies breakpoint-based visibility.
       useClass: Boolean,
@@ -15,11 +16,13 @@
       visible:  Boolean,
     },
 
+
     data() {
       return {
         show: false,
       };
     },
+
 
     methods: {
       /**
@@ -40,11 +43,19 @@
       },
     },
 
+
     created() {
       // Show when the page loads if `visible` prop passed.
       if (this.visible) {
         this.show = true;
       }
+
+      HexBus.$on('HexToggle:toggled', (uid) => {
+        // If this is the targeted panel, toggle it.
+        if (uid === this._uid) {
+          this.toggleVisibility();
+        }
+      });
     },
   }
 </script>
