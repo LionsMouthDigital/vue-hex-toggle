@@ -52,18 +52,18 @@
       }
 
       // Toggle visibility when targeting tab gets clicked.
-      HexBus.$on('HexToggle:toggled', (uid) => {
+      HexBus.$on('HexToggle:toggled', (toggle) => {
         // If this is the targeted panel, toggle it.
-        if (uid === this._uid) {
+        if (toggle.targetPanel._uid === this._uid) {
           this.toggleVisibility();
         }
       });
 
       // Close panel when targeting tab says to.
       // Useful when tab (other than targeting tab) from accordion gets clicked.
-      HexBus.$on('HexToggle:panelClosed', (uid) => {
+      HexBus.$on('HexToggle:panelClosed', (toggle) => {
         // If this is the targeted panel, close it.
-        if (uid === this._uid) {
+        if (toggle.targetPanel._uid === this._uid) {
           this.show = false;
         }
       });
