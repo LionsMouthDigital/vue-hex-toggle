@@ -39,7 +39,8 @@
 
         } else {
           // The class-y way. ಠ_ರೃ
-          this.$el.classList.toggle('hidden');
+          // Use a non-tailwind conflicting class
+          this.$el.classList.toggle('is-hidden');
         }
       },
     },
