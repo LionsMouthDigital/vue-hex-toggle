@@ -56,6 +56,9 @@
         // this.$el.classList.toggle('is-open');
         // HexBus.$emit('HexToggle:toggled', this.targetPanel._uid, this.accordion);
         HexBus.$emit('HexToggle:toggled', this)
+        if (this.targetPanelIsOpen) {
+          HexBus.$emit('HexToggle:toggledParent', this)
+        }
         this.targetPanelIsOpen = !this.targetPanelIsOpen;
       },
 
