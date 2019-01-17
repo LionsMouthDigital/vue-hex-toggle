@@ -65,7 +65,14 @@
       HexBus.$on('HexToggle:panelClosed', (toggle) => {
         // If this is the targeted panel, close it.
         if (toggle.targetPanel._uid === this._uid) {
-          this.show = false;
+          if (!this.useClass) {
+            this.show = false;
+
+          } else {
+            // The class-y way. ಠ_ರೃ
+            // Use a non-tailwind conflicting class
+            this.$el.classList.add('is-hidden');
+          }
         }
       });
     },
